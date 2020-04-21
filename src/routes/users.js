@@ -11,7 +11,6 @@ router.route('/:usuario')
     .put(UpdateUser)
     .delete(DeleteUser)
     .get(GetUser)
-    .patch(UpdateUser)
 module.exports = router
 
 //.post guardar nuevo dato

@@ -12,7 +12,8 @@ const CarSchema = new Schema({
     color: String,
     año: Number,
     estado_prestado: Boolean,
-    ubicacion: String
+    ubicacion: String,
+    nombreImagen:String,
 }, {
     timestamps: true
 })

@@ -13,7 +13,7 @@ carCtrl.GetCars = async (req, res) => {
 
 carCtrl.CreateCar = async (req, res) => {
     try {
-        const { marca, modelo, placa, color, año, estado_prestado, ubicaion } = req.body
+        const { marca, modelo, placa, color, año, estado_prestado, ubicaion,nombreImagen } = req.body
         const NewCar = new carModel({
             marca,
             modelo,
@@ -21,7 +21,8 @@ carCtrl.CreateCar = async (req, res) => {
             color,
             año,
             estado_prestado,
-            ubicaion
+            ubicaion,
+            nombreImagen
         })
         await NewCar.save();
         res.json({ messge: ' Created car ' })

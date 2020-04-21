@@ -9,6 +9,7 @@ router.route('/')
 //especificando id
 router.route('/:placa')
     .post(CreateCar)
+    .put(UpdateCar)
     .delete(DeleteCar)
     .get(GetCar)
 module.exports = router

@@ -43,19 +43,11 @@ usersCtrl.GetUser = async (req, res) => {
 };
 usersCtrl.UpdateUser = async (req, res) => {
     const usuario = req.params.usuario;
-    //const body = req.body;
-    const { nombre, apellido, contraseña, direccion, Cc } = req.body
-    const Userupdated = new UserModel({
-        nombre,
-        apellido,
-        contraseña,
-        direccion,
-        Cc
-    })
+    const body = req.body;
     try {
         const userDB = await UserModel.findOneAndUpdate(
-            {usuario},
-            Userupdated);
+            usuario,
+            body, { new: true });
         res.json({ mensaje: 'actualizacion exitosa' });
     } catch (error) {
         return res.status(400).json({
@@ -68,7 +60,7 @@ usersCtrl.UpdateUser = async (req, res) => {
 usersCtrl.DeleteUser = async (req, res) => {
     try {
         await UserModel.findOneAndDelete(req.params.usuario)
-        res.json({ m: 'deleted' })
+        res.json({ m: 'deleted',us:req.params.usuario })
     } catch (error) {
         res.json(error); //aquí se maneja el error
     }
