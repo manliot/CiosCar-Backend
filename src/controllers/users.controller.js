@@ -30,22 +30,45 @@ usersCtrl.CreateUser = async (req, res) => {
 };
 
 usersCtrl.GetUser = async (req, res) => {
+    const usuario = req.params.usuario;
     try {
-        const User = await UserModel.findById(req.params.id);
-        res.json(User)
+        const userDB = await UserModel.findOne({ usuario });
+        res.json(userDB);
     } catch (error) {
-        res.json(error); //aquí se maneja el error
+        return res.status(400).json({
+            mensaje: "error al obtener usuario",
+            error
+        })
     }
 };
 usersCtrl.UpdateUser = async (req, res) => {
-    await UserModel.findOneAndUpdate(req.params.id, req.body)
-    res.json({ m: 'update' })
+    const usuario = req.params.usuario;
+    //const body = req.body;
+    const { nombre, apellido, contraseña, direccion, Cc } = req.body
+    const Userupdated = new UserModel({
+        nombre,
+        apellido,
+        contraseña,
+        direccion,
+        Cc
+    })
+    try {
+        const userDB = await UserModel.findOneAndUpdate(
+            usuario,
+            Userupdated);
+        res.json({ mensaje: 'actualizacion exitosa' });
+    } catch (error) {
+        return res.status(400).json({
+            mensaje: usuario,
+            error
+        })
+    }
 };
 
 usersCtrl.DeleteUser = async (req, res) => {
     try {
-        await UserModel.findOneAndDelete(req.params.id)
-        res.json({ m: 'deleteed' })
+        await UserModel.findOneAndDelete(req.params.usuario)
+        res.json({ m: 'deleted' })
     } catch (error) {
         res.json(error); //aquí se maneja el error
     }

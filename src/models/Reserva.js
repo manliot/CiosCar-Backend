@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose')
 var Car = mongoose.model('Car');
 var Usuario = mongoose.model('Usuario');
 
-const ReservasSchema = new Schema({
+const Reservaschema = new Schema({
     fecha_inicio: Date,
     fecha_fin: Date,
     usuario: {
@@ -18,3 +18,4 @@ const ReservasSchema = new Schema({
 }, {
     timestamps: true
 })
+module.exports=model('reserva',Reservaschema)

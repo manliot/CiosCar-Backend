@@ -7,9 +7,10 @@ router.route('/')
     .get(GetUsers)
     .post(CreateUser)
 //especificando id
-router.route('/:id')
+router.route('/:usuario')
     .post(CreateUser)
     .put(UpdateUser)
+    .patch(UpdateUser)
     .delete(DeleteUser)
     .get(GetUser)
 module.exports = router
