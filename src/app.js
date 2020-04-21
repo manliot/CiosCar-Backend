@@ -12,6 +12,6 @@ app.use(express.json());
 //routes
 app.use('/api/users', require('./routes/users'));// cuando accedemos a //localhost/api/notes usa el archivo users.js
 app.use('/api/cars', require('./routes/cars'));
-//app.use('/api/reservas', require('./routes/reservas'));
+app.use('/api/reservas', require('./routes/reservas'));
 
 module.exports = app;

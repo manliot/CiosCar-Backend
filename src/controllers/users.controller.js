@@ -54,7 +54,7 @@ usersCtrl.UpdateUser = async (req, res) => {
     })
     try {
         const userDB = await UserModel.findOneAndUpdate(
-            usuario,
+            {usuario},
             Userupdated);
         res.json({ mensaje: 'actualizacion exitosa' });
     } catch (error) {

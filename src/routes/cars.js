@@ -7,9 +7,8 @@ router.route('/')
     .get(GetCars)
     .post(CreateCar)
 //especificando id
-router.route('/:usuario')
+router.route('/:placa')
     .post(CreateCar)
-    .put(UpdateCar)
     .delete(DeleteCar)
     .get(GetCar)
 module.exports = router

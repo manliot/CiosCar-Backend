@@ -24,7 +24,7 @@ carCtrl.CreateCar = async (req, res) => {
             ubicaion
         })
         await NewCar.save();
-        res.json({ messge: ' Created user ' })
+        res.json({ messge: ' Created car ' })
     } catch (error) {
         res.json(error); //aquí se maneja el error
     }
@@ -32,7 +32,7 @@ carCtrl.CreateCar = async (req, res) => {
 carCtrl.GetCar = async (req, res) => {
     const placa = req.params.placa;
     try {
-        const carDB = await UserModel.findOne({ placa });
+        const carDB = await carModel.findOne({ placa });
         res.json(carDB);
     } catch (error) {
         return res.status(400).json({
@@ -45,7 +45,7 @@ carCtrl.UpdateCar = async (req, res) => {
     const placa = req.params.placa;
     const body = req.body;
     try {
-        const userDB = await UserModel.findOneAndUpdate(
+        const carDB = await carModel.findOneAndUpdate(
             placa,
             body, { new: true });
         res.json({ mensaje: 'actualizacion exitosa' });
