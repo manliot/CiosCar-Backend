@@ -15,7 +15,7 @@ usersCtrl.VerifyUser = async(req,res)=>{
             if(user.usuario=usuario && user.contraseña==contraseña){
                 res.json({mensaje: 'succesfull'})
             }else{
-                res.json({mensaje:`error contraseña ${contraseña}`})
+                res.json({mensaje:`error contraseña, res: ${req.body}`})
             }
         }        
     }catch(error){
