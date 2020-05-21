@@ -4,10 +4,11 @@ const UserModel = require('../models/User')
 
 usersCtrl.VerifyUser = async(req,res)=>{
       try{
-        const usuario = req.params.user;
-        const {contraseña}=req.body
+        const usuario = req.params.DataUser.usuario;
+        const contraseña=req.params.DataUser.contraseña;
+        //const {contraseña}=req.body
              
-        const user = await UserModel.findOne( {usuario} );
+        const user = await UserModel.findOne( {usuario} )            
       
         if (!user){
                 res.json({mensaje:'error usuario'})        
@@ -15,7 +16,7 @@ usersCtrl.VerifyUser = async(req,res)=>{
             if(user.usuario=usuario && user.contraseña==contraseña){
                 res.json({mensaje: 'succesfull'})
             }else{
-                res.json({mensaje:`error contraseña, res:: ${req.body.contraseña}`})
+                res.json({mensaje:`error contraseña, res:: ${contraseña}`})
             }
         }        
     }catch(error){
