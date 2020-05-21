@@ -3,5 +3,5 @@ const router = Router();
 const { VerifyUser } = require('../controllers/verifyuser.controller')
 
 router.route('/')
-    .get(VerifyUser)    
+    .post(VerifyUser)    
 module.exports = router
