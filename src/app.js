@@ -14,5 +14,5 @@ app.use('/api/users', require('./routes/users'));// cuando accedemos a //localho
 app.use('/api/cars', require('./routes/cars'));
 app.use('/api/reservas', require('./routes/reservas'));
 app.use('/api/verifyuser', require('./routes/verifyuser'));
-
+app.use('/api/plan',require('./routes/plan'))
 module.exports = app;
