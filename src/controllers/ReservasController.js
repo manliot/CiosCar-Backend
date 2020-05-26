@@ -13,12 +13,12 @@ reservaCtrl.GetReservas = async (req, res) => {
 
 reservaCtrl.CreateReserva = async (req, res) => {
     try {
-        const { fecha_inicio, fecha_fin, usuario, car, id_reserva } = req.body
+        const { fecha_inicio, fecha_fin, usuario, car} = req.body
         const NewReserva = new reservaModel({
             fecha_inicio,
             fecha_fin,
-            usuario, car,
-            id_reserva
+            usuario, 
+            car
         })
         await NewReserva.save();
         res.json({ messge: ' Created reserva' })
